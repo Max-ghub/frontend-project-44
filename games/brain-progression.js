@@ -3,21 +3,34 @@ import theGame from '../src/index.js';
 
 const description = 'What number is missing in the progression?';
 
-const brainProgression = () => {
-  const firstElem = getRandomNum(1, 49);
-  const progressionStep = getRandomNum(1, 9);
-  const progressionSize = getRandomNum(5, 10);
-  const progressionHideInd = getRandomNum(0, progressionSize - 1);
+const createProgression = () => {
+  const rN = getRandomNum;
+  const [progressionFirstElem, progressionStep, progressionSize] = [rN(1, 49), rN(1, 9), rN(5, 10)];
+  const progression = [progressionFirstElem];
 
-  const progression = [firstElem];
   for (let i = 0; i < progressionSize; i += 1) {
     progression.push(progression[i] + progressionStep);
   }
 
-  const trueAnswer = progression[progressionHideInd];
-  progression[progressionHideInd] = '..';
+  return progression;
+};
 
-  return [progression.join(' '), trueAnswer.toString()];
+const createQuestionAndGetTrueAnswer = (progression) => {
+  const question = progression;
+  const progressionSize = progression.length;
+  const hideInd = getRandomNum(0, progressionSize - 1);
+  const trueAnswer = progression[hideInd];
+
+  question[hideInd] = '..';
+
+  return [question.join(' '), trueAnswer.toString()];
+};
+
+const brainProgression = () => {
+  const progression = createProgression();
+  const [question, trueAnswer] = createQuestionAndGetTrueAnswer(progression);
+
+  return [question, trueAnswer];
 };
 
 export default () => theGame(brainProgression, description);
