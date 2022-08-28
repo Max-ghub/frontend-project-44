@@ -6,7 +6,7 @@ const gameDescription = 'What is the result of the expression?';
 
 const createOperator = () => operators[getRandomNum(0, 2)];
 const createQuestion = (firstNum, operator, secondNum) => `${firstNum} ${operator} ${secondNum}`;
-const getAnswer = (firstNum, operator, secondNum) => {
+const getTrueAnswer = (firstNum, operator, secondNum) => {
   let answer = 0;
 
   if (operator === '+') {
@@ -24,7 +24,7 @@ const brainCalc = () => {
   const [firstNum, secondNum] = [getRandomNum(), getRandomNum()];
   const operator = createOperator();
   const question = createQuestion(firstNum, operator, secondNum);
-  const trueAnswer = getAnswer(firstNum, operator, secondNum);
+  const trueAnswer = getTrueAnswer(firstNum, operator, secondNum);
 
   return [question, trueAnswer];
 };

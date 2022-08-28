@@ -4,7 +4,7 @@ import theGame from '../src/index.js';
 const description = 'Find the greatest common divisor of given numbers.';
 
 const createQuestion = (firstNum, secondNum) => `${firstNum} ${secondNum}`;
-const getAnswer = (firstNum, secondNum) => {
+const getTrueAnswer = (firstNum, secondNum) => {
   const countCycles = firstNum > secondNum ? firstNum : secondNum;
   let gcd = 1;
   for (let i = countCycles; i > 1; i -= 1) {
@@ -20,7 +20,7 @@ const getAnswer = (firstNum, secondNum) => {
 const brainGCD = () => {
   const [firstNum, secondNum] = [getRandomNum(), getRandomNum()];
   const question = createQuestion(firstNum, secondNum);
-  const trueAnswer = getAnswer(firstNum, secondNum);
+  const trueAnswer = getTrueAnswer(firstNum, secondNum);
 
   return [question, trueAnswer];
 };

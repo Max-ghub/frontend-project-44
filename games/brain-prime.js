@@ -3,6 +3,7 @@ import theGame from '../src/index.js';
 
 const description = '"yes" if given number is prime. Otherwise answer "no".';
 
+const createQuestion = () => getRandomNum();
 const isPrime = (num) => {
   for (let i = 2; i < num; i += 1) {
     if (num % i === 0) {
@@ -14,10 +15,10 @@ const isPrime = (num) => {
 };
 
 const brainPrime = () => {
-  const num = getRandomNum();
-  const trueAnswer = isPrime(num) ? 'yes' : 'no';
+  const question = createQuestion();
+  const trueAnswer = isPrime(question) ? 'yes' : 'no';
 
-  return [num, trueAnswer];
+  return [question, trueAnswer];
 };
 
 export default () => theGame(brainPrime, description);
