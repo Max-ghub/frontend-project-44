@@ -17,7 +17,7 @@ const brainProgression = () => {
   const trueAnswer = progression[progressionHideInd];
   progression[progressionHideInd] = '..';
 
-  return [progression, trueAnswer.toString()];
+  return [progression.join(' '), trueAnswer.toString()];
 };
 
 export default () => theGame(brainProgression, description);
