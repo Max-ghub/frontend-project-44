@@ -11,7 +11,7 @@ export default (brainGame, description) => {
   for (let i = 0; i < gameCycles; i += 1) {
     const [question, trueAnswer] = brainGame();
     console.log(`Question: ${question}`);
-    console.log(trueAnswer);
+    // console.log(trueAnswer);
     const userAnswer = readlineSync.question('Your answer: ');
 
     if (userAnswer !== trueAnswer) {
