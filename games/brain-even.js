@@ -3,10 +3,11 @@ import getRandomNum from '../src/functions.js';
 
 const gameDescription = 'Answer "yes" if the number is even, otherwise answer "no".';
 
+const createQuestion = () => getRandomNum();
 const isEven = (num) => num % 2 === 0;
 
 const brainEven = () => {
-  const question = getRandomNum();
+  const question = createQuestion();
   const trueAnswer = isEven(question) ? 'yes' : 'no';
 
   return [question, trueAnswer];
