@@ -7,10 +7,10 @@ const createQuestion = (firstNum, secondNum) => `${firstNum} ${secondNum}`;
 const getAnswer = (firstNum, secondNum) => {
   const countCycles = firstNum > secondNum ? firstNum : secondNum;
   let gcd = 1;
-
-  for (let i = countCycles; i > 2; i -= 1) {
+  for (let i = countCycles; i > 1; i -= 1) {
     if (firstNum % i === 0 && secondNum % i === 0) {
       gcd = i;
+      return gcd.toString();
     }
   }
 
