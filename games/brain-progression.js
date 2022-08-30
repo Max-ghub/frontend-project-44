@@ -1,36 +1,36 @@
+import gameLauncher from '../src/index.js';
 import getRandomNum from '../src/functions.js';
-import theGame from '../src/index.js';
 
-const description = 'What number is missing in the progression?';
+const gameDescription = 'What number is missing in the progression?';
 
 const createProgression = () => {
   const rN = getRandomNum;
-  const [progressionFirstElem, progressionStep, progressionSize] = [rN(1, 49), rN(1, 9), rN(5, 10)];
-  const progression = [progressionFirstElem];
+  const [progrssnFirstNum, progrssnStep, progrssnSize] = [rN(1, 49), rN(1, 9), rN(5, 10)];
+  const progrssn = [progrssnFirstNum];
 
-  for (let i = 0; i < progressionSize; i += 1) {
-    progression.push(progression[i] + progressionStep);
+  for (let i = 0; i < progrssnSize; i += 1) {
+    progrssn.push(progrssn[i] + progrssnStep);
   }
 
-  return progression;
+  return progrssn;
 };
 
-const createQuestionAndGetTrueAnswer = (progression) => {
-  const question = progression;
-  const progressionSize = progression.length;
-  const hideInd = getRandomNum(0, progressionSize - 1);
-  const trueAnswer = progression[hideInd];
+const hideProgressionNumAndGetCorrectAnswer = (progrssn) => {
+  const progrssnHidden = progrssn;
+  const progrssnSize = progrssn.length;
+  const hideInd = getRandomNum(0, progrssnSize - 1);
+  const correctAnswer = progrssn[hideInd];
 
-  question[hideInd] = '..';
+  progrssnHidden[hideInd] = '..';
 
-  return [question.join(' '), trueAnswer.toString()];
+  return [progrssnHidden, correctAnswer];
 };
 
 const brainProgression = () => {
-  const progression = createProgression();
-  const [question, trueAnswer] = createQuestionAndGetTrueAnswer(progression);
+  const progrssn = createProgression();
+  const [progrssnHidden, correctAnswer] = hideProgressionNumAndGetCorrectAnswer(progrssn);
 
-  return [question, trueAnswer];
+  return [progrssnHidden.join(' '), correctAnswer.toString()];
 };
 
-export default () => theGame(brainProgression, description);
+export default () => gameLauncher(brainProgression, gameDescription);

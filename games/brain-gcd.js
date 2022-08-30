@@ -1,28 +1,29 @@
+import gameLauncher from '../src/index.js';
 import getRandomNum from '../src/functions.js';
-import theGame from '../src/index.js';
 
-const description = 'Find the greatest common divisor of given numbers.';
+const gameDescription = 'Find the greatest common divisor of given numbers.';
 
-const createQuestion = (firstNum, secondNum) => `${firstNum} ${secondNum}`;
-const getTrueAnswer = (firstNum, secondNum) => {
-  const countCycles = firstNum > secondNum ? firstNum : secondNum;
+const getCorrectAnswer = (firstNum, lastNum) => {
+  const maxNum = firstNum > lastNum ? firstNum : lastNum;
+
   let gcd = 1;
-  for (let i = countCycles; i > 1; i -= 1) {
-    if (firstNum % i === 0 && secondNum % i === 0) {
+  for (let i = maxNum; i > 1; i -= 1) {
+    if (firstNum % i === 0 && lastNum % i === 0) {
       gcd = i;
-      return gcd.toString();
+      return gcd;
     }
   }
 
-  return gcd.toString();
+  return gcd;
 };
 
 const brainGCD = () => {
-  const [firstNum, secondNum] = [getRandomNum(), getRandomNum()];
-  const question = createQuestion(firstNum, secondNum);
-  const trueAnswer = getTrueAnswer(firstNum, secondNum);
+  const [firstNum, lastNum] = [getRandomNum(), getRandomNum()];
 
-  return [question, trueAnswer];
+  const question = `${firstNum} ${lastNum}`;
+  const correctAnswer = getCorrectAnswer(firstNum, lastNum);
+
+  return [question, correctAnswer.toString()];
 };
 
-export default () => theGame(brainGCD, description);
+export default () => gameLauncher(brainGCD, gameDescription);

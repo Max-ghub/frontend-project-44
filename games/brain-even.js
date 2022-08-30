@@ -1,16 +1,15 @@
-import theGame from '../src/index.js';
+import gameLauncher from '../src/index.js';
 import getRandomNum from '../src/functions.js';
 
 const gameDescription = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const createQuestion = () => getRandomNum();
 const isEven = (num) => num % 2 === 0;
 
 const brainEven = () => {
-  const question = createQuestion();
-  const trueAnswer = isEven(question) ? 'yes' : 'no';
+  const num = getRandomNum();
+  const correctAnswer = isEven(num) ? 'yes' : 'no';
 
-  return [question, trueAnswer];
+  return [num, correctAnswer];
 };
 
-export default () => theGame(brainEven, gameDescription);
+export default () => gameLauncher(brainEven, gameDescription);

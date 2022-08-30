@@ -1,32 +1,32 @@
+import gameLauncher from '../src/index.js';
 import getRandomNum from '../src/functions.js';
-import theGame from '../src/index.js';
 
-const operators = ['+', '-', '*'];
 const gameDescription = 'What is the result of the expression?';
 
-const createOperator = () => operators[getRandomNum(0, 2)];
-const createQuestion = (firstNum, operator, secondNum) => `${firstNum} ${operator} ${secondNum}`;
-const getTrueAnswer = (firstNum, operator, secondNum) => {
-  let answer = 0;
+const getCorrectAnswer = (firstNum, operator, lastNum) => {
+  let correctAnswer = 0;
 
   if (operator === '+') {
-    answer = firstNum + secondNum;
+    correctAnswer = firstNum + lastNum;
   } else if (operator === '-') {
-    answer = firstNum - secondNum;
+    correctAnswer = firstNum - lastNum;
   } else {
-    answer = firstNum * secondNum;
+    correctAnswer = firstNum * lastNum;
   }
 
-  return answer.toString();
+  return correctAnswer;
 };
 
 const brainCalc = () => {
-  const [firstNum, secondNum] = [getRandomNum(), getRandomNum()];
-  const operator = createOperator();
-  const question = createQuestion(firstNum, operator, secondNum);
-  const trueAnswer = getTrueAnswer(firstNum, operator, secondNum);
+  const [firstNum, lastNum] = [getRandomNum(), getRandomNum()];
 
-  return [question, trueAnswer];
+  const listOperators = ['+', '-', '*'];
+  const operator = listOperators[getRandomNum(0, 2)];
+
+  const question = `${firstNum} ${operator} ${lastNum}`;
+  const correctAnswer = getCorrectAnswer(firstNum, operator, lastNum);
+
+  return [question, correctAnswer.toString()];
 };
 
-export default () => theGame(brainCalc, gameDescription);
+export default () => gameLauncher(brainCalc, gameDescription);

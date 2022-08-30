@@ -1,9 +1,8 @@
+import gameLauncher from '../src/index.js';
 import getRandomNum from '../src/functions.js';
-import theGame from '../src/index.js';
 
-const description = '"yes" if given number is prime. Otherwise answer "no".';
+const gameDescription = '"yes" if given number is prime. Otherwise answer "no".';
 
-const createQuestion = () => getRandomNum(2);
 const isPrime = (num) => {
   for (let i = 2; i < num; i += 1) {
     if (num % i === 0) {
@@ -15,10 +14,10 @@ const isPrime = (num) => {
 };
 
 const brainPrime = () => {
-  const question = createQuestion();
-  const trueAnswer = isPrime(question) ? 'yes' : 'no';
+  const num = getRandomNum(2);
+  const correctAnswer = isPrime(num) ? 'yes' : 'no';
 
-  return [question, trueAnswer];
+  return [num, correctAnswer];
 };
 
-export default () => theGame(brainPrime, description);
+export default () => gameLauncher(brainPrime, gameDescription);
