@@ -1,7 +1,7 @@
 import gameLauncher from '../src/index.js';
 import getRandomNum from '../src/functions.js';
 
-const gameDescription = '"yes" if given number is prime. Otherwise answer "no".';
+const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (num) => {
   for (let i = 2; i < num; i += 1) {
