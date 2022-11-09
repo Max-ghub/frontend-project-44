@@ -10,7 +10,7 @@ const gameLauncher = (brainGameType, gameDescription) => {
   for (let i = 0; i < gameCycles; i += 1) {
     const [question, correctAnswer] = brainGameType();
     console.log(`Question: ${question}`);
-    console.log(correctAnswer);
+    // console.log(correctAnswer);
     const userAnswer = readlineSync.question('Your answer: ');
 
     if (userAnswer !== correctAnswer) {
